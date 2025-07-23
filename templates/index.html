@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PATM</title>
+<link rel="stylesheet" href="{{url_for('.static', filename='index.css')}}">
+</head>
+<body>
+
+
+<div class="navbar">
+
+    <ul class="link">
+        <a href="#home">Home</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        <a href="{{ url_for('appointment')}}" class="btn">Book an appointment with us.</a>
+    </ul>
+    
+</div>
+
+<div class="promo-banner">
+  <p><h1> NEVER MISS ANY APPOITMENT.</h1><br>Good health is our piority.<br>We prioroitize your health. Our services are open 24 hours a day and all out doctors are always avaliable to attend to our patients.</p>
+
+  <div class="appoint-tab">
+    <img src="C:\Users\hp\Pictures\Saved Pictures\doctor1.jpg">
+   <p><h2>APPOINTMENTS</h2><br>Book an appointment with us. We'd be happy to have you onboard.</p>
+    <img src="C:\Users\hp\Pictures\Saved Pictures\doctor3.jpg">
+    <p><h2>WHY CHOOSE US?</h2><br> So far we've done all but tell you why we are the best at what we do.<em>Why choose Us?</em>,<br> Well we are the best at what we do, we have the most dedicated team of doctors and medical personnel on standby just waiting to give you the best treatment that they can.<br> So, why choose us? <em>BECAUSE WE'RE THE BEST AT WHAT WE DO</em> </p>
+  </div>
+
+
+
+</div>
+    <div class="table">
+         <table action="{{url_for('index')}}">
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Card No.</th>
+          <th>Dr. Name</th>
+      {% for user in uc %}
+      
+      <tr>
+        <td>{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+        <td>{{user[2]}}</td>
+        <td>{{user[3]}}</td>
+        <td><Pre>{{user[4]}}</Pre></td>
+      <td>  <form method="post" action="/user/{{user}}" class="delete-form">
+          
+        <button class="button-form" type="submit">delete</button>
+      </form></td>
+ 
+      </tr> 
+      
+      {% endfor%}
+    </table>
+  </div>
+    
+
+</body>
+</html>
